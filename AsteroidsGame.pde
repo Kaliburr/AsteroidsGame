@@ -1,35 +1,47 @@
-//your variable declarations here
+SpaceShip starchild;
+
 public void setup() 
 {
-  //your code here
+  size(500,500);
+  starchild=new SpaceShip();
+  
 }
 public void draw() 
 {
-  //your code here
+  //background(0);
+  starchild.show();
 }
 class SpaceShip extends Floater  
 {   
-    public SpaceShip(int x, int y,  int degrees){
+    int x, y, degrees;
+    public SpaceShip(){
       corners=3;
       xCorners=new int[corners];
       yCorners=new int[corners];
-      xCorners[0]=-13;
-      yCorners[0]=-14;
-      xCorners[1]=14;
+      xCorners[0]=-8;
+      yCorners[0]=-8;
+      xCorners[1]=16;
       yCorners[1]=0;
-      xCorners[2]=-13;
-      yCorners[2]=14;
+      xCorners[2]=-8;
+      yCorners[2]=8;
+      
     }
     public void setX(int x){myCenterX=x;}
-    public int getX(){return myCenterX;}
-    public void setX(int y){myCenterY=y;}
-    public int getY(){return myCenterY;}
+    public int getX(){return (int)myCenterX;}
+    public void setY(int y){myCenterY=y;}
+    public int getY(){return (int)myCenterY;}
     public void setDirectionX(double x){myDirectionX=x;}   
     public double getDirectionX(){return myDirectionX;}
     public void setDirectionY(double y){myDirectionY=y;}   
     public double getDirectionY(){return myDirectionY;}   
     public void setPointDirection(int degrees){myPointDirection=degrees;}   
     public double getPointDirection(){return myPointDirection;}
+    /*public void show(){
+      myColor=color(colorA,colorB,colorC);
+      colorA=(int)(Math.random()*256);
+      colorB=(int)(Math.random()*256);
+      colorC=(int)(Math.random()*256);
+    }*/
 }
 abstract class Floater //Do NOT modify the Floater class! Make changes in the SpaceShip class 
 {   
@@ -107,4 +119,3 @@ abstract class Floater //Do NOT modify the Floater class! Make changes in the Sp
     endShape(CLOSE);  
   }   
 } 
-
