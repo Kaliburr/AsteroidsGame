@@ -8,12 +8,14 @@ public void setup()
 }
 public void draw() 
 {
-  //background(0);
+  background(0);
   starchild.show();
+  starchild.keyPressed();
+  starchild.move();
 }
 class SpaceShip extends Floater  
 {   
-    int x, y, degrees;
+    public int x, y, degrees;
     public SpaceShip(){
       corners=3;
       xCorners=new int[corners];
@@ -24,7 +26,12 @@ class SpaceShip extends Floater
       yCorners[1]=0;
       xCorners[2]=-8;
       yCorners[2]=8;
-      
+      myColor=color(32,73,123);
+      myCenterX=250;
+      myCenterY=250;
+      myDirectionX=20;
+      //myDirectionY+=myDirectionY;
+      myPointDirection+=myPointDirection;
     }
     public void setX(int x){myCenterX=x;}
     public int getX(){return (int)myCenterX;}
@@ -36,12 +43,12 @@ class SpaceShip extends Floater
     public double getDirectionY(){return myDirectionY;}   
     public void setPointDirection(int degrees){myPointDirection=degrees;}   
     public double getPointDirection(){return myPointDirection;}
-    /*public void show(){
-      myColor=color(colorA,colorB,colorC);
-      colorA=(int)(Math.random()*256);
-      colorB=(int)(Math.random()*256);
-      colorC=(int)(Math.random()*256);
-    }*/
+    public void keyPressed(){
+      if(key=='a'){
+        myCenterX--;
+        myPointDirection
+      }
+    }
 }
 abstract class Floater //Do NOT modify the Floater class! Make changes in the SpaceShip class 
 {   
