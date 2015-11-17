@@ -64,6 +64,8 @@ public void keyPressed(){
       if(key==' '){
         starchild.setX((int)(Math.random()*501));
         starchild.setY((int)(Math.random()*501));
+        starchild.setDirectionX(0);
+        starchild.setDirectionY(0);
       }
 }
 class Stars{
