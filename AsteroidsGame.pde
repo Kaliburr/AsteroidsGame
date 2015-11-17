@@ -1,21 +1,29 @@
+Stars[] andromeda;
 SpaceShip starchild;
-
 public void setup() 
 {
   size(500,500);
-  starchild=new SpaceShip();
   
+  andromeda=new Stars[200];
+  for(int i=0;i<andromeda.length;i++){
+    andromeda[i]=new Stars();
+  }
+  starchild=new SpaceShip();
 }
 public void draw() 
 {
   background(0);
-  starchild.show();
+  
   starchild.move();
-  //starchild.accelerate();
-  //starchild.rotate();
+  //starchild.accelerate(starchild.);
+  //starchild.rotate(starchild.nDegreesOfRotation);
+  for(int i=0;i<andromeda.length;i++){
+    andromeda[i].show();
+  }
+  starchild.show();
 }
 public void keyPressed(){
-  if(key=='a'){
+      if(key=='a'){
         starchild.setDirectionX(-2);
         starchild.setPointDirection(180);
       }
@@ -31,29 +39,52 @@ public void keyPressed(){
         starchild.setDirectionY(2);
         starchild.setPointDirection(90);
       }
-      if(key=='x'){
-        /*if(starchild.setDirectionX(-2)){
-          starchild.setDirectionX(-10);
-        }
-        if(starchild.setDirectionY(-2)){
-          starchild.setDirectionY(-10);
-        }
-        if(starchild.setDirectionX(2)){
-          starchild.setDirectionX(10);
-        }
-        if(starchild.setDirectionY(2)){
-          starchild.setDirectionY(10);
-        }*/
+      if(key=='f'){
+        starchild.setDirectionX(-10);
+        starchild.setPointDirection(180);
+      }
+      if(key=='h'){
+        starchild.setDirectionX(10);
+        starchild.setPointDirection(0);
+      }
+      if(key=='t'){
+        starchild.setDirectionY(-10);
+        starchild.setPointDirection(270);
+      }
+      if(key=='g'){
+        starchild.setDirectionY(10);
+        starchild.setPointDirection(90);
+      }
+      if(key=='e'){
+        starchild.rotate(10);
+      }
+      if(key=='r'){
+        starchild.rotate(-10);
       }
       if(key==' '){
         starchild.setX((int)(Math.random()*501));
         starchild.setY((int)(Math.random()*501));
-        
       }
+}
+class Stars{
+    int a,b,c,d,e;
+    public Stars(){
+      
+      a=(int)(Math.random()*256);
+      b=(int)(Math.random()*256);
+      c=(int)(Math.random()*256);
+      d=(int)(Math.random()*501);
+      e=(int)(Math.random()*501);
+    }
+    public void show(){
+      fill(a,b,c);
+      ellipse(d,e,5,5);
+    }
+  
 }
 class SpaceShip extends Floater  
 {   
-    public int x, y, degrees;
+    //public int x, y, degrees;
     public SpaceShip(){
       corners=3;
       xCorners=new int[corners];
@@ -67,7 +98,7 @@ class SpaceShip extends Floater
       myColor=color(32,73,123);
       myCenterX=250;
       myCenterY=250;
-      myPointDirection+=myPointDirection;
+      
     }
     public void setX(int x){myCenterX=x;}
     public int getX(){return (int)myCenterX;}
