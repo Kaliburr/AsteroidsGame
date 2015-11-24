@@ -1,5 +1,6 @@
 Stars[] andromeda;
 SpaceShip starchild;
+Asteroids[] celes;
 public void setup() 
 {
   size(500,500);
@@ -7,6 +8,10 @@ public void setup()
   andromeda=new Stars[200];
   for(int i=0;i<andromeda.length;i++){
     andromeda[i]=new Stars();
+  }
+  celes=new Asteroids[100];
+  for(int i=0;i<celes.length;i++){
+    celes[i]=new Asteroids();
   }
   starchild=new SpaceShip();
 }
@@ -19,6 +24,10 @@ public void draw()
   //starchild.rotate(starchild.nDegreesOfRotation);
   for(int i=0;i<andromeda.length;i++){
     andromeda[i].show();
+  }
+  for(int i=0;i<celes.length;i++){
+    celes[i].show();
+    celes[i].move();
   }
   starchild.show();
 }
@@ -88,7 +97,6 @@ class Stars{
 }
 class SpaceShip extends Floater  
 {   
-    //public int x, y, degrees;
     public SpaceShip(){
       corners=3;
       xCorners=new int[corners];
@@ -191,3 +199,39 @@ abstract class Floater //Do NOT modify the Floater class! Make changes in the Sp
     endShape(CLOSE);  
   }   
 } 
+class Asteroids extends Floater{
+  protected int asterotation;
+  public Asteroids(){
+    corners=4;
+    xCorners=new int[corners];
+    yCorners=new int[corners];
+    xCorners[0]=-9;
+    yCorners[0]=-9;
+    xCorners[1]=9;
+    yCorners[1]=-9;
+    xCorners[2]=9;
+    yCorners[2]=9;
+    xCorners[3]=-9;
+    yCorners[3]=9;
+    myColor=color(223,182,132);
+    myCenterX=(int)(Math.random()*501);
+    myCenterY=(int)(Math.random()*501);
+    asterotation=(int)(Math.random()*43)-21;
+  }
+  public void setX(int x){myCenterX=x;}
+  public int getX(){return (int)myCenterX;}
+  public void setY(int y){myCenterY=y;}
+  public int getY(){return (int)myCenterY;} 
+  public void setDirectionX(double x){myDirectionX=x;}   
+  public double getDirectionX(){return myDirectionX;}
+  public void setDirectionY(double y){myDirectionY=y;}   
+  public double getDirectionY(){return myDirectionY;}   
+  public void setPointDirection(int degrees){myPointDirection=degrees;}   
+  public double getPointDirection(){return myPointDirection;}
+  public void setastero(int astero){asterotation=astero;}
+  public int getastero(){return (int)asterotation;}
+  public void move(){
+    super.move();
+    rotate(asterotation);
+  }
+}
