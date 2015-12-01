@@ -9,7 +9,7 @@ public void setup()
   for(int i=0;i<andromeda.length;i++){
     andromeda[i]=new Stars();
   }
-  celes=new Asteroids[100];
+  celes=new Asteroids[25];
   for(int i=0;i<celes.length;i++){
     celes[i]=new Asteroids();
   }
@@ -231,7 +231,8 @@ class Asteroids extends Floater{
   public void setastero(int astero){asterotation=astero;}
   public int getastero(){return (int)asterotation;}
   public void move(){
-    super.move();
+    myCenterX=myCenterX+(int)(Math.random()*7)-3;
+    myCenterY=myCenterY+(int)(Math.random()*7)-3;
     rotate(asterotation);
   }
 }
