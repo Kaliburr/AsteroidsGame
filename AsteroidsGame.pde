@@ -1,8 +1,7 @@
 Stars[] andromeda;
 SpaceShip starchild;
-//Asteroids[] celes;
 ArrayList<Asteroids>celes;
-
+ArrayList<Bullet>gun;
 public void setup() 
 {
   size(500,500);
@@ -11,28 +10,21 @@ public void setup()
   for(int i=0;i<andromeda.length;i++){
     andromeda[i]=new Stars();
   }
-  //celes=new Asteroids[25];
   celes=new ArrayList<Asteroids>();
-  /*for(int i=0;i<celes.length;i++){
-    celes[i]=new Asteroids();
-  }*/
   for(int i=0;i<24;i++){
     celes.add(new Asteroids());
   }
   starchild=new SpaceShip();
+  gun=new ArrayList<Bullet>();
+
 }
 public void draw() 
 {
   background(0);
-  
   starchild.move();
   for(int i=0;i<andromeda.length;i++){
     andromeda[i].show();
   }
-  /*for(int i=0;i<celes.length;i++){
-    celes[i].show();
-    celes[i].move();
-  }*/
   for(int i=0;i<celes.size();i++){
     celes.get(i).show();
     celes.get(i).move();
@@ -133,6 +125,30 @@ class SpaceShip extends Floater
     public double getDirectionY(){return myDirectionY;}   
     public void setPointDirection(int degrees){myPointDirection=degrees;}   
     public double getPointDirection(){return myPointDirection;}
+}
+class Bullet extends Floater{
+  public Bullet(SpaceShip starchild){
+    myCenterX=starchild.getX();
+    myCenterY=starchild.getY();
+    myPointDirection=starchild.getPointDirection();
+    double dRadians =myPointDirection*(Math.PI/180);
+    myDirectionX=5 * Math.cos(dRadians) +starchild.getDirectionX();
+    myDirectionY=5*Math.sin(dRadians)+starchild.getDirectionY();
+  }
+  public void setX(int x){myCenterX=x;}
+  public int getX(){return (int)myCenterX;}
+  public void setY(int y){myCenterY=y;}
+  public int getY(){return (int)myCenterY;}
+  public void setDirectionX(double x){myDirectionX=x;}   
+  public double getDirectionX(){return myDirectionX;}
+  public void setDirectionY(double y){myDirectionY=y;}   
+  public double getDirectionY(){return myDirectionY;}   
+  public void setPointDirection(int degrees){myPointDirection=degrees;}   
+  public double getPointDirection(){return myPointDirection;}
+  public void show(){
+    fill(230,151,29);
+    ellipse((float)myCenterX,(float)myCenterY,5,5);
+  }
 }
 class Asteroids extends Floater{
   protected int asterotation;
