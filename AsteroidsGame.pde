@@ -1,6 +1,6 @@
 Stars[] andromeda=new Stars[200];
 SpaceShip starchild=new SpaceShip();
-ArrayList<Asteroids>celes=new ArrayList<Asteroids>();
+//ArrayList<Asteroids>celes=new ArrayList<Asteroids>();
 //ArrayList<Bullet>gun=new ArrayList<Bullet>();
 public void setup() 
 {
@@ -9,7 +9,7 @@ public void setup()
     andromeda[i]=new Stars();
   }
   for(int i=0;i<24;i++){
-    celes.add(new Asteroids());
+    //celes.add(new Asteroids());
   }
 }
 public void draw() 
@@ -19,13 +19,13 @@ public void draw()
   for(int i=0;i<andromeda.length;i++){
     andromeda[i].show();
   }
-  for(int i=0;i<celes.size();i++){
+  /*for(int i=0;i<celes.size();i++){
     celes.get(i).show();
     celes.get(i).move();
     float d=dist(starchild.getX(),starchild.getY(),celes.get(i).getX(),celes.get(i).getY());
     if(d<25)
       celes.remove(i);
-  }
+  }*/
   starchild.show();
   /*for(int i=0;i<gun.size();i++){
     gun.get(i).show();
