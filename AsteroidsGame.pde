@@ -1,7 +1,7 @@
 Stars[] andromeda=new Stars[200];
 SpaceShip starchild=new SpaceShip();
 //ArrayList<Asteroids>celes=new ArrayList<Asteroids>();
-//ArrayList<Bullet>gun=new ArrayList<Bullet>();
+ArrayList<Bullet>gun=new ArrayList<Bullet>();
 public void setup() 
 {
   size(500,500);
@@ -27,10 +27,10 @@ public void draw()
       celes.remove(i);
   }*/
   starchild.show();
-  /*for(int i=0;i<gun.size();i++){
+  for(int i=0;i<gun.size();i++){
     gun.get(i).show();
     gun.get(i).move();
-  }*/
+  }
   checkcollision();
 }
 public void keyTyped(){
@@ -73,7 +73,7 @@ public void keyTyped(){
         starchild.rotate(-10);
       }
       if(key=='c'){
-        //gun.add(new Bullet(starchild));
+        gun.add(new Bullet(starchild));
       }
       if(key==' '){
         starchild.setX((int)(Math.random()*501));
@@ -135,7 +135,7 @@ class SpaceShip extends Floater
     public void setPointDirection(int degrees){myPointDirection=degrees;}   
     public double getPointDirection(){return myPointDirection;}
 }
-/*class Bullet extends Floater{
+class Bullet extends Floater{
   public Bullet(SpaceShip starchild){
     myCenterX=starchild.getX();
     myCenterY=starchild.getY();
@@ -162,7 +162,7 @@ class SpaceShip extends Floater
     myCenterX+=myDirectionX;
     myCenterY+=myDirectionY;
   }
-}*/
+}
 class Asteroids extends Floater{
   protected int asterotation;
   public Asteroids(){
