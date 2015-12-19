@@ -4,20 +4,13 @@ ArrayList<Asteroids>celes=new ArrayList<Asteroids>();
 ArrayList<Bullet>gun=new ArrayList<Bullet>();
 public void setup() 
 {
-  size(500,500,P2D);
-  //andromeda=new Stars[200];
+  size(500,500);
   for(int i=0;i<andromeda.length;i++){
     andromeda[i]=new Stars();
   }
-  //celes=new ArrayList<Asteroids>();
   for(int i=0;i<24;i++){
     celes.add(new Asteroids());
   }
-  //starchild=new SpaceShip();
-  //gun=new ArrayList<Bullet>();
-  /*for(int i=0;i<1;i++){
-    gun.add(new Bullet(starchild));
-  }*/
 }
 public void draw() 
 {
@@ -104,7 +97,6 @@ public void checkcollision(){
 class Stars{
     int a,b,c,d,e;
     public Stars(){
-      
       a=(int)(Math.random()*256);
       b=(int)(Math.random()*256);
       c=(int)(Math.random()*256);
@@ -115,7 +107,6 @@ class Stars{
       fill(a,b,c);
       ellipse(d,e,5,5);
     }
-  
 }
 class SpaceShip extends Floater  
 {   
@@ -132,7 +123,6 @@ class SpaceShip extends Floater
       myColor=color(32,73,123);
       myCenterX=250;
       myCenterY=250;
-      
     }
     public void setX(int x){myCenterX=x;}
     public int getX(){return (int)myCenterX;}
@@ -231,7 +221,6 @@ abstract class Floater //Do NOT modify the Floater class! Make changes in the Sp
   abstract public double getDirectionY();   
   abstract public void setPointDirection(int degrees);   
   abstract public double getPointDirection(); 
-
   //Accelerates the floater in the direction it is pointing (myPointDirection)   
   public void accelerate (double dAmount)   
   {          
@@ -251,7 +240,6 @@ abstract class Floater //Do NOT modify the Floater class! Make changes in the Sp
     //change the x and y coordinates by myDirectionX and myDirectionY       
     myCenterX += myDirectionX;    
     myCenterY += myDirectionY;     
-
     //wrap around screen    
     if(myCenterX >width)
     {     
