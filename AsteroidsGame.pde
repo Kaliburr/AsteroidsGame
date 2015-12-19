@@ -15,9 +15,9 @@ public void setup()
   }
   starchild=new SpaceShip();
   gun=new ArrayList<Bullet>();
-  for(int i=0;i<1;i++){
+  /*for(int i=0;i<1;i++){
     gun.add(new Bullet(starchild));
-  }
+  }*/
 }
 public void draw() 
 {
@@ -36,7 +36,9 @@ public void draw()
   starchild.show();
   for(int i=0;i<gun.size();i++){
     gun.get(i).show();
+    gun.get(i).move();
   }
+  checkcollision();
 }
 public void keyTyped(){
       if(key=='a'){
@@ -78,10 +80,7 @@ public void keyTyped(){
         starchild.rotate(-10);
       }
       if(key=='c'){
-        for(int i=0;i<gun.size();i++){
-          
-
-        }
+        gun.add(new Bullet(starchild));
       }
       if(key==' '){
         starchild.setX((int)(Math.random()*501));
@@ -91,6 +90,16 @@ public void keyTyped(){
         starchild.setPointDirection((int)(Math.random()*360));
         starchild.setPointDirection((int)(Math.random()*360));
       }
+}
+public void checkcollision(){
+  for(int i=0;i<gun.size();i++){
+   for(int j=0;j<celes.size();j++){
+    if(dist(celes.get(j).getX(),celes.get(j).getY(),gun.get(i).getX(),gun.get(i).getY())<20)
+     {gun.remove(i);
+     celes.remove(j);
+     break;}
+   }
+  }
 }
 class Stars{
     int a,b,c,d,e;
@@ -158,6 +167,10 @@ class Bullet extends Floater{
   public void show(){
     fill(255,255,255);
     ellipse((float)myCenterX,(float)myCenterY,5,5);
+  }
+  public void move(){
+    myCenterX+=myDirectionX;
+    myCenterY+=myDirectionY;
   }
 }
 class Asteroids extends Floater{
