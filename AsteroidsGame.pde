@@ -1,20 +1,20 @@
-Stars[] andromeda;
-SpaceShip starchild;
-ArrayList<Asteroids>celes;
-ArrayList<Bullet>gun;
+Stars[] andromeda=new Stars[200];
+SpaceShip starchild=new SpaceShip();
+ArrayList<Asteroids>celes=new ArrayList<Asteroids>();
+ArrayList<Bullet>gun=new ArrayList<Bullet>();
 public void setup() 
 {
-  size(500,500,P2D);
-  andromeda=new Stars[200];
+  size(500,500);
+  //andromeda=new Stars[200];
   for(int i=0;i<andromeda.length;i++){
     andromeda[i]=new Stars();
   }
-  celes=new ArrayList<Asteroids>();
+  //celes=new ArrayList<Asteroids>();
   for(int i=0;i<24;i++){
     celes.add(new Asteroids());
   }
-  starchild=new SpaceShip();
-  gun=new ArrayList<Bullet>();
+  //starchild=new SpaceShip();
+  //gun=new ArrayList<Bullet>();
   /*for(int i=0;i<1;i++){
     gun.add(new Bullet(starchild));
   }*/
