@@ -4,7 +4,7 @@ ArrayList<Asteroids>celes=new ArrayList<Asteroids>();
 ArrayList<Bullet>gun=new ArrayList<Bullet>();
 public void setup() 
 {
-  size(500,500);
+  size(500,500,P2D);
   //andromeda=new Stars[200];
   for(int i=0;i<andromeda.length;i++){
     andromeda[i]=new Stars();
